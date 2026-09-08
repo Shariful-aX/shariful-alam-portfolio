@@ -385,7 +385,7 @@ const projects = [
   {
     number: "05",
     title: "Half-Car Suspension Dynamics Modeling & Ride Comfort Optimization",
-    eyebrow: "Vehicle Dynamics",
+    eyebrow: "Systems Dynamics",
     description: "A half-car suspension model studying wheel motion, chassis bounce, and pitch over a road bump, with stiffness and damping tuned to improve ride comfort.",
     detail: "Developed a half-car suspension dynamics model using nominal Tesla Model 3 parameters to study coupled wheel, chassis, and pitch motion over a road bump. Formulated the equations of motion from free body diagrams, represented the system in state-space form, and simulated its transient response using MATLAB / Simulink and the ODE45 solver. Compared baseline and tuned suspension responses to evaluate how stiffness and damping influence vibration and ride comfort.",
     tags: ["MATLAB / Simulink", "State-Space Modeling", "Vibrations", "System Dynamics", "ODE45 Solver", "Ride Comfort Optimization"],

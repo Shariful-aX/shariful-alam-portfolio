@@ -626,6 +626,7 @@ section.hero-section { min-height: 100svh; padding-bottom: max(2rem, env(safe-ar
 }
 
 @media (max-width: 767px) {
+  .hero-title { font-size: clamp(2rem, 12.5vw, 4.8rem); white-space: nowrap; overflow-wrap: normal; }
   .accent-line { width: 1.8rem; }
   .hero-background { background-position: 61% center; transform-origin: 66% 48%; }
   .hero-scrim { background: linear-gradient(0deg, rgba(3, 6, 11, .85), rgba(3, 6, 11, .35) 85%); }
@@ -649,7 +650,6 @@ section.hero-section { min-height: 100svh; padding-bottom: max(2rem, env(safe-ar
 
 @media (max-width: 480px) {
   .stats-grid { grid-template-columns: 1fr; }
-  .hero-title { font-size: clamp(3.75rem, 20vw, 5.4rem); }
   .education-details div { grid-template-columns: 1fr; gap: .25rem; }
   .contact-heading { font-size: clamp(2.8rem, 13.5vw, 4.3rem); }
 }
