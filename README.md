@@ -1,6 +1,10 @@
 # Shariful Alam — Engineering Portfolio
 
-Responsive single-page portfolio with nine project detail windows, image galleries, experience and education, technical skills, and contact links.
+The engineering portfolio of Md Shariful Alam, featuring projects in biomechanics, finite element analysis, mechanical design, dynamics, robotics, and materials selection.
+
+**Website:** [sharifulalam.dev](https://sharifulalam.dev/)
+
+The site brings together project summaries, simulation results, CAD models, fabrication photographs, research and teaching experience, and a downloadable résumé. Responsive layouts and accessible navigation support desktop and mobile browsing.
 
 ## Preview locally
 
@@ -31,10 +35,8 @@ The build bundles React locally and generates the CSS ahead of time. Responsive 
 
 Validation checks the generated page, JavaScript syntax, and local asset references. Tests cover section navigation, keyboard and touch interruption, nested scrolling, dialog behavior, and reduced-motion controls.
 
-## Publication
+## Deployment
 
-Publish only when requested. The latest `dist` folder contains the complete static website; no database or server-side application is required. Historical ZIP exports are not automatically refreshed.
+The site is hosted on GitHub Pages with the custom domain `sharifulalam.dev`. Updates pushed to `main` trigger the deployment workflow, which installs dependencies, builds the site, runs validation and tests, and publishes the generated `dist` directory.
 
-Once the final public domain is chosen, set the Open Graph and Twitter image metadata to that domain's absolute image URL and rebuild before publishing.
-
-Original project materials and the separate Pre-Astra Backup are not modified by this website's build.
+The site is static and does not require a database or application server.
