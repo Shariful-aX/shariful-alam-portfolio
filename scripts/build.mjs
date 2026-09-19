@@ -1,5 +1,7 @@
 import { createHash } from "node:crypto";
-import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, rm, writeFile, mkdtemp, unlink, rmdir } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { createRequire } from "node:module";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { build } from "esbuild";
@@ -54,6 +56,23 @@ const app = await readFile(resolve(dist, "app.js"));
 const favicon = await readFile(resolve(dist, "favicon.svg"));
 const indexPath = resolve(dist, "index.html");
 let html = await readFile(indexPath, "utf8");
+
+// Render the same components and optimized assets used by the browser bundle.
+const serverBuild = await build({
+  stdin: { contents: `${source}\nimport { renderToString } from "react-dom/server";\nexport const renderedHtml = renderToString(<App />);`, loader: "jsx", resolveDir: resolve(root, "src"), sourcefile: "prerender.jsx" },
+  bundle: true, write: false, platform: "node", format: "cjs",
+  define: { "process.env.NODE_ENV": '"production"' }
+});
+const temporaryDirectory = await mkdtemp(resolve(tmpdir(), "portfolio-prerender-"));
+const serverPath = resolve(temporaryDirectory, "render.cjs");
+try {
+  await writeFile(serverPath, serverBuild.outputFiles[0].contents);
+  const { renderedHtml } = createRequire(import.meta.url)(serverPath);
+  html = html.replace('<div id="root"></div>', () => `<div id="root">${renderedHtml}</div>`);
+} finally {
+  await unlink(serverPath);
+  await rmdir(temporaryDirectory);
+}
 
 html = html
   .replace(/href="favicon\.svg(?:\?v=[^"]+)?"/, `href="favicon.svg?v=${version(favicon)}"`)

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from "react";
-import { createRoot } from "react-dom/client";
+import { hydrateRoot } from "react-dom/client";
 import { createPortal } from "react-dom";
 
 const MotionContext = createContext(false);
@@ -781,15 +781,16 @@ function Navbar() {
 function Hero() {
   const paused = useContext(MotionContext);
   const phrases = [
-    "Flight & Propulsion",
+    "Mechanical Design",
     "Nonlinear FEA",
     "Thermal Systems",
+    "Flight & Propulsion",
     "Vehicle Dynamics",
     "Robotics & Controls",
     "CAD to Fabrication"
   ];
   const [phraseIndex, setPhraseIndex] = useState(0);
-  const [visible, setVisible] = useState("");
+  const [visible, setVisible] = useState(phrases[0]);
   const [deleting, setDeleting] = useState(false);
   const heroRef = useRef(null);
   const backgroundRef = useRef(null);
@@ -1294,18 +1295,22 @@ function Footer({ motionPaused, onToggleMotion }) {
   );
 }
 
-function App() {
-  const [motionPaused, setMotionPaused] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+export function App() {
+  const [motionPaused, setMotionPaused] = useState(false);
   useEffect(() => {
     document.documentElement.dataset.motion = motionPaused ? "paused" : "running";
   }, [motionPaused]);
   useEffect(() => {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => setMotionPaused(preference.matches);
+    update();
+    document.documentElement.classList.add("is-interactive");
     preference.addEventListener("change", update);
     return () => preference.removeEventListener("change", update);
   }, []);
   return <MotionContext.Provider value={motionPaused}><SmoothScroll /><a className="skip-link" href="#main-content">Skip to content</a><div className="noise" /><Navbar /><main id="main-content" tabIndex={-1}><Hero /><About /><Projects /><Experience /><Stack /><Contact /></main><Footer motionPaused={motionPaused} onToggleMotion={() => setMotionPaused((value) => !value)} /></MotionContext.Provider>;
 }
 
-createRoot(document.getElementById("root")).render(<App />);
+if (typeof document !== "undefined") {
+  hydrateRoot(document.getElementById("root"), <App />);
+}

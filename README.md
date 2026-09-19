@@ -31,7 +31,7 @@ pnpm validate
 pnpm test
 ```
 
-The build bundles React locally and generates the CSS ahead of time. Responsive WebP covers reduce initial image downloads while gallery images retain their original detail. Google Fonts are optional; the site uses system font fallbacks if they are unavailable.
+The build renders the page content as static HTML, bundles React locally, and generates the CSS ahead of time. The main sections, project summaries, contact links, and résumé remain available without JavaScript; React adds galleries, dialogs, and motion controls when it loads. Responsive WebP covers reduce initial image downloads while gallery images retain their original detail. Google Fonts are optional; the site uses system font fallbacks if they are unavailable.
 
 Validation checks the generated page, JavaScript syntax, and local asset references. Tests cover section navigation, keyboard and touch interruption, nested scrolling, dialog behavior, and reduced-motion controls.
 

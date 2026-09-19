@@ -16,7 +16,7 @@ if (missing.length) {
   console.error(`Missing required content: ${missing.join(", ")}`);
   process.exit(1);
 }
-if ((app.match(/<h1/g) || []).length !== 1) {
+if ((html.match(/<h1\b/g) || []).length !== 1) {
   console.error("The page must contain exactly one h1 element.");
   process.exit(1);
 }
@@ -32,6 +32,17 @@ for (const asset of [...assets, "favicon.svg", "og-shariful-alam.png"]) {
 }
 for (const match of builtApp.matchAll(/images\/covers\/[\w.-]+\.webp/g)) await readFile(resolve(root, "dist", match[0]));
 for (const id of ["top", "about", "projects", "stack", "experience", "contact", "main-content"]) {
-  if (!app.includes(`id="${id}"`)) throw new Error(`Missing navigation destination: ${id}`);
+  if (!html.includes(`id="${id}"`)) throw new Error(`Missing prerendered navigation destination: ${id}`);
 }
+const projectCount = (app.match(/\n    title: /g) || []).length;
+if ((html.match(/class="project-title"/g) || []).length !== projectCount) throw new Error("All project titles must be present in the initial HTML.");
+for (const href of ["mailto:ae.shariful@gmail.com", "resume/Shariful-Alam-Resume.pdf"]) {
+  if (!html.includes(`href="${href}"`)) throw new Error(`Missing static contact or resume link: ${href}`);
+}
+for (const marker of [
+  '<link rel="canonical" href="https://sharifulalam.dev/"',
+  '<meta property="og:url" content="https://sharifulalam.dev/"',
+  '<meta property="og:image" content="https://sharifulalam.dev/og-shariful-alam.png"',
+  '<meta name="twitter:image" content="https://sharifulalam.dev/og-shariful-alam.png"'
+]) if (!html.includes(marker)) throw new Error(`Missing canonical or preview metadata: ${marker}`);
 console.log(`Validation passed: required sections, single h1, navigation destinations, and ${assets.size + 2} local assets.`);

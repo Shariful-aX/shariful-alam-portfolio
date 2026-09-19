@@ -312,6 +312,11 @@ section.hero-section { min-height: 100svh; padding-bottom: max(2rem, env(safe-ar
   transition: opacity .72s cubic-bezier(.22,1,.36,1) var(--reveal-delay, 0ms), transform .72s cubic-bezier(.22,1,.36,1) var(--reveal-delay, 0ms);
 }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
+html:not(.is-interactive) .reveal { opacity: 1; transform: none; }
+html:not(.is-interactive) .project-detail-button,
+html:not(.is-interactive) .caret,
+html:not(.is-interactive) .motion-toggle { display: none; }
+html:not(.is-interactive) .marquee-track { animation: none; }
 
 .portrait-frame {
   position: relative;
