@@ -380,28 +380,6 @@ html:not(.is-interactive) .marquee-track { animation: none; }
   font-size: .95rem;
   line-height: 1.72;
 }
-.philosophy-quote {
-  margin: clamp(3.5rem, 6vw, 6rem) 0 0;
-  padding: clamp(3rem, 5.5vw, 5rem) 1.5rem;
-  border-top: 1px solid rgb(var(--border));
-  border-bottom: 1px solid rgb(var(--border));
-  text-align: center;
-}
-.philosophy-quote p {
-  max-width: 27ch;
-  margin-inline: auto;
-  color: rgb(var(--foreground));
-  font: 500 clamp(2.3rem, 4.4vw, 4.4rem)/1.02 "Cormorant Garamond", Georgia, serif;
-  letter-spacing: -.04em;
-  text-wrap: balance;
-}
-.philosophy-quote footer {
-  margin-top: 1.5rem;
-  color: rgb(var(--accent));
-  font: 600 .68rem/1 "Inter", sans-serif;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
 .portrait-caption {
   position: absolute;
   right: 0;

@@ -343,8 +343,8 @@ const projects = [
     title: "Bone-Screw Implant Biomechanics: High Resolution FEA & Mesh Optimization",
     eyebrow: "NSF Undergraduate Research",
     description: "High-resolution nonlinear finite element models investigating screw-bone interaction across cortical shells and stochastic trabecular microstructures.",
-    detail: "Developed stochastic Voronoi-based bone geometries in MATLAB and Blender, prepared and optimized the meshes in Altair HyperMesh, and configured materials, contact, boundary conditions, and analysis in Abaqus/CAE.",
-    tags: ["MATLAB", "BLENDER", "ALTAIR HYPERMESH", "ABAQUS / CAE"],
+    detail: "Developed stochastic Voronoi-based bone geometries in MATLAB and Blender and prepared tetrahedral meshes in Altair HyperMesh. Configured materials, contact, boundary conditions, and implicit analyses in Abaqus/CAE using Abaqus/Standard. Investigated mesh quality and convergence issues while studying how trabecular structure, cortical shells, and screw geometry affect implant–bone interaction.",
+    tags: ["MATLAB", "BLENDER", "ALTAIR HYPERMESH", "ABAQUS/CAE (STANDARD)"],
     image: "images/bone-screw-mesh-composite-v2.png",
     alt: "Side-by-side high-resolution bone-screw finite element models",
     gallery: boneScrewGallery
@@ -374,10 +374,10 @@ const projects = [
   {
     number: "04",
     title: "Machined Aluminum C-Clamp & Machine Shop Manufacturing",
-    eyebrow: "Precision Manufacturing",
-    description: "A functional aluminum C-clamp fabricated from raw stock through manual machining, CNC operations, threading, assembly, and laser engraving.",
-    detail: "Manufactured a functional aluminum C-clamp from raw stock, connecting dimensioned drawings with cutting, milling, drilling, tapping, lathe threading, CNC machining, assembly, and laser engraving. The broader machine-shop work covered vertical and horizontal band saws, welding, and dimensional inspection, building practical experience in process planning, fabrication, and part fit.",
-    tags: ["VERTICAL & HORIZONTAL BAND SAWS", "DRILL PRESS", "MILLING", "LATHE", "CNC", "WELDING", "LASER ENGRAVING", "DIMENSIONING"],
+    eyebrow: "Manufacturing & Prototyping",
+    description: "A functional aluminum C-clamp fabricated from raw stock through manual milling, drilling, tapping, lathe threading, assembly, and dimensional inspection, with exposure to the CNC manufacturing workflow.",
+    detail: "Manufactured and assembled a functional aluminum C-clamp from raw stock using engineering drawings to guide manual milling, drilling, tapping, and lathe threading. Checked dimensions and part fit during fabrication and assembly. Observed the instructor-led CNC programming and machining workflow as part of the project; the finished clamp also includes laser engraving. The project connected drawing interpretation, machining sequence, and dimensional inspection with a working mechanical assembly.",
+    tags: ["ENGINEERING DRAWINGS", "MANUAL MILLING", "DRILLING & TAPPING", "LATHE THREADING", "ASSEMBLY", "DIMENSIONAL INSPECTION", "CNC WORKFLOW EXPOSURE"],
     image: "images/c-clamp-gallery/1.png",
     alt: "Completed machined and laser-engraved aluminum C-clamp held in hand",
     gallery: clampGallery
@@ -439,13 +439,13 @@ const projects = [
 ];
 
 const stackRows = [
-  ["MATLAB", "Abaqus", "HyperMesh", "SolidWorks"],
-  ["Inventor", "AutoCAD", "Blender", "Multisim"],
-  ["C#", "Excel", "Photoshop", "Illustrator"]
+  ["SolidWorks", "MATLAB / Simulink", "Abaqus/CAE", "HyperMesh"],
+  ["Inventor", "Fusion 360", "AutoCAD", "Arduino C/C++"],
+  ["Blender", "Multisim", "GRANTA EduPack", "Excel"]
 ];
 
 const experiences = [
-  { role: "Undergraduate Biomechanics Research Assistant", place: "Dr. Wei Zeng · NSF Research", date: "May 2026 — Present · Old Westbury, NY · On-Site", copy: "Conduct NSF-funded computational research on bone-screw implant fixation, investigating how trabecular porosity, cortical shells, and screw geometry influence pull-out mechanics. Develop bone geometries and finite element meshes using MATLAB, Blender, and HyperMesh, and configure nonlinear contact analyses in Abaqus. Review biomechanics literature to inform modeling assumptions, mesh refinement, and interpretation of implant–bone interaction." },
+  { role: "Undergraduate Biomechanics Research Assistant", place: "Dr. Wei Zeng · NSF Research", date: "May 2026 — Present · Old Westbury, NY · On-Site", copy: "Conduct NSF-funded computational research on bone-screw implant fixation, investigating how trabecular porosity, cortical shells, and screw geometry influence pull-out mechanics. Develop bone geometries and finite element meshes using MATLAB, Blender, and HyperMesh, and configure implicit nonlinear contact analyses in Abaqus/Standard. Review biomechanics literature to inform modeling assumptions, mesh refinement, and interpretation of implant–bone interaction." },
   { role: "Undergraduate Research Assistant", place: "Dr. Tindaro Ioppolo · Undergraduate Research and Entrepreneurship Program (UREP)", date: "Sep 2025 — Apr 2026 · Old Westbury, NY · On-Site", copy: "Collaborated on the redesign of an optical wall shear stress sensor using whispering gallery mode resonance in PDMS microspheres. Addressed limited sensitivity by reducing membrane stiffness and improving deformation transfer through the sensing assembly. Combined SolidWorks modeling and structural simulation with microsphere fabrication and sensor assembly to prepare the revised design for future experimental validation." },
   { role: "Peer Tutor", place: "NYIT Office of Academic Success and Enrichment", date: "Mar 2024 — Present · Old Westbury, NY · Hybrid", copy: "Support approximately 15 undergraduates in manufacturing, thermodynamics, CAD, MATLAB, physics, and circuits through two to three weekly tutoring sessions. Break down engineering concepts into manageable steps and guide students through problem-solving methods and software applications. Track individual progress and adapt session plans to recurring errors, helping students develop stronger understanding and more independent study habits." },
   { role: "Mathematics Tutor", place: "NYIT Math Resource Center", date: "Oct 2025 — Present · Old Westbury, NY · On-Site", copy: "Provide mathematics tutoring from Precalculus through Differential Equations and Linear Algebra, supporting six students across two weekly sessions. Explain underlying concepts, work through representative problems, and help students connect mathematical methods with their coursework. Record attendance and progress after each session to identify areas that need reinforcement and guide subsequent support." }
@@ -852,7 +852,7 @@ function Hero() {
       <div aria-hidden="true" className="hero-scrim absolute inset-0 -z-10" />
       <div ref={contentRef} className="hero-content relative w-full text-left">
         <div className="hero-eyebrow mb-5 flex items-center justify-start gap-4 text-accent">
-          <span className="accent-line" /> MECHANICAL &amp; AEROSPACE ENGINEERING
+          <span className="accent-line" /> MECHANICAL ENGINEERING
         </div>
         <h1 className="hero-title font-display text-[clamp(3.9rem,9.5vw,8rem)] font-bold leading-[.84] text-foreground">Shariful Alam</h1>
         <p className="mt-5 min-h-8 font-mono text-base text-accent sm:text-lg"><span className="sr-only">Focus areas: {phrases.join(", ")}.</span><span aria-hidden="true">{visible}<span className="caret" /></span></p>
@@ -862,7 +862,7 @@ function Hero() {
             <span className="hero-statement-line">clear models and working hardware.</span>
           </span>
         </p>
-        <p className="hero-statement-support mt-4 max-w-xl text-base text-foreground/80 sm:text-lg">From nonlinear FEA and vehicle dynamics to autonomous robotics and precision fabrication.</p>
+        <p className="hero-statement-support mt-4 max-w-xl text-base text-foreground/80 sm:text-lg">From nonlinear FEA and system dynamics to autonomous robotics and hands-on fabrication.</p>
         <div className="mt-7 flex flex-col justify-start gap-3 sm:flex-row">
           <a href="#projects" className="button-primary">View projects <span aria-hidden="true">↓</span></a>
           <a href="#contact" className="button-secondary">GET IN TOUCH</a>
@@ -891,7 +891,7 @@ function About() {
     {
       number: "01",
       title: "Analyze",
-      copy: "Nonlinear FEA, system dynamics, fatigue, structural behavior, and MATLAB-based modeling."
+      copy: "Nonlinear FEA, system dynamics, fatigue, structural forces, and thermodynamic cycle modeling."
     },
     {
       number: "02",
@@ -914,8 +914,8 @@ function About() {
         <Reveal delay={80} className="about-copy">
           <h2 className="about-heading">Engineering at the intersection of <span className="text-accent">simulation, motion, and making.</span></h2>
           <div className="about-body">
-            <p>Mechanical engineering student at New York Institute of Technology with an aerospace focus and hands-on experience across the full development cycle—from first-principles analysis and CAD to simulation, prototyping, testing, and fabrication.</p>
-            <p>My work spans nonlinear finite-element analysis, vehicle-vibration dynamics, autonomous robotics, aircraft performance, machine-element fatigue design, optical sensing, materials selection, lightweight structures, and precision manufacturing. Using SolidWorks, Inventor, Fusion 360, MATLAB, Abaqus, HyperMesh, and Arduino C++, I connect computational models with testable, reliable hardware.</p>
+            <p>Mechanical engineering student at New York Institute of Technology with research and project experience in mechanical design, simulation, and prototyping. My work combines first-principles analysis and CAD with model development, fabrication, and testing.</p>
+            <p>My projects span implant biomechanics, vehicle dynamics, autonomous robotics, machine-element fatigue, optical sensing, materials selection, structural testing, and turboprop performance. I use SolidWorks, Inventor, Fusion 360, MATLAB, Abaqus/CAE, HyperMesh, and Arduino C++ to investigate mechanical behavior and develop physical prototypes. Machine-shop work includes manual machining, dimensional inspection, and instructor-led exposure to CNC manufacturing.</p>
           </div>
         </Reveal>
       </div>
@@ -928,12 +928,6 @@ function About() {
           </Reveal>
         ))}
       </div>
-      <Reveal delay={160}>
-        <blockquote className="philosophy-quote">
-          <p>“Engineering is the closest thing to magic that exists in the world.”</p>
-          <footer>— Elon Musk</footer>
-        </blockquote>
-      </Reveal>
     </section>
   );
 }
@@ -1117,14 +1111,13 @@ function Projects() {
 const skillGroups = [
   {
     "icon": "⚡",
-    "title": "FEA & Computational Tools",
+    "title": "FEA & Simulation",
     "items": [
-      "Abaqus Standard / Explicit",
+      "Abaqus/CAE (Standard)",
       "Altair HyperMesh",
-      "2D/3D Tetramesh",
-      "Non-Linear Contact Mechanics",
-      "CDP Damage Plasticity",
-      "Mesh Convergence Analysis",
+      "Tetrahedral Meshing & Mesh Cleanup",
+      "Nonlinear Contact Analysis",
+      "Mesh Quality & Convergence Troubleshooting",
       "Ansys GRANTA EduPack",
       "Ashby Selection Charts"
     ]
@@ -1136,49 +1129,53 @@ const skillGroups = [
       "SolidWorks (Part/Assembly/Drawing)",
       "Autodesk Inventor",
       "Autodesk Fusion 360",
-      "Blender (Mesh Decimation)",
-      "GD&T Standards",
-      "Free Body Diagrams (FBD)",
+      "AutoCAD (2D Drafting)",
+      "Blender Mesh Processing",
+      "Engineering Drawings",
+      "Free-Body Diagrams",
       "Machine Element Sizing"
     ]
   },
   {
     "icon": "💻",
-    "title": "Programming & Embedded",
+    "title": "Programming & Mechatronics",
     "items": [
       "MATLAB & Simulink",
-      "ODE45 Numerical Solvers",
-      "Arduino C / C++",
-      "MPU-6050 IMU Integration",
-      "State Machine Architecture",
-      "Circuit Schematic Design",
-      "L298N Motor Drivers"
+      "ODE45 Numerical Solver",
+      "Arduino C/C++",
+      "IMU & Ultrasonic Sensor Integration",
+      "Embedded Control Logic",
+      "Basic Circuit Design & Wiring",
+      "DC Motor Driver Integration"
     ]
   },
   {
     "icon": "🛠️",
-    "title": "Machining & Fabrication",
+    "title": "Manufacturing & Prototyping",
     "items": [
-      "Manual Vertical Milling",
-      "Engine Lathe Threading",
-      "CNC Machining",
-      "Horizontal / Vertical Band Saw",
+      "Manual Milling",
+      "Lathe & Threading",
       "Drill Press & Hand Tapping",
-      "Laser Cutting & Engraving",
+      "TIG Welding",
       "FDM 3D Printing",
-      "Precision Metrology"
+      "Band Saw",
+      "Dimensional Inspection",
+      "CNC Manufacturing Exposure"
     ]
   },
   {
     "icon": "🌀",
-    "title": "Dynamics & Propulsion",
+    "title": "Mechanical, Thermal & Aerospace Analysis",
     "items": [
-      "4-DOF Half-Car Suspension",
-      "State-Space Linearization",
-      "DE-Soderberg Fatigue Theory",
-      "Howe Truss Force Analysis",
-      "Turboprop Brayton Cycle",
-      "Aerodynamic Flight Envelope"
+      "Vehicle Dynamics & 4-DOF Suspension Modeling",
+      "State-Space Modeling & Linearization",
+      "Machine Element & Fatigue Analysis",
+      "DE-Soderberg Criterion",
+      "Structural Force Analysis",
+      "Thermodynamic Cycle Analysis",
+      "Heat Transfer & Thermal Systems",
+      "Turboprop Brayton Cycle Analysis",
+      "Flight Envelope Analysis"
     ]
   },
   {
@@ -1186,10 +1183,10 @@ const skillGroups = [
     "title": "Sensors & Laboratory",
     "items": [
       "Whispering Gallery Mode (WGM)",
-      "PDMS Polymeric Microspheres",
-      "Tapered Optical Fibers",
+      "PDMS Microsphere Fabrication",
+      "Optical Sensor Prototyping",
+      "Sensor Assembly",
       "Wall Shear Stress Sensing",
-      "Cleanroom Assembly",
       "Microscope Inspection"
     ]
   }
