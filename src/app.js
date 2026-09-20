@@ -237,12 +237,6 @@ const bridgeGallery = [
     "alt": "Truss Simulation · Axial Force Distribution"
   },
   {
-    "src": "images/bridge-gallery/fusion360.png",
-    "thumbnail": "images/bridge-gallery/fusion360-thumb.webp",
-    "title": "Fusion 360 · Structural Simulation",
-    "alt": "Fusion 360 · Structural Simulation"
-  },
-  {
     "src": "images/bridge-gallery/testing-preparation.jpg",
     "thumbnail": "images/bridge-gallery/testing-preparation-thumb.webp",
     "title": "Load Test Preparation",
@@ -409,8 +403,8 @@ const projects = [
     title: "High-Efficiency Howe Truss Paper Bridge",
     eyebrow: "Structural Design & Testing",
     description: "A modified Howe truss built from rolled paper and glued joints, using force-distribution analysis and reinforced compression members to maximize load capacity relative to weight.",
-    detail: "Designed and fabricated a modified Howe truss paper bridge to maximize load capacity relative to structural weight. Truss simulations guided a 2:1 span-to-height ratio and more even axial-force distribution, while Fusion 360 analysis supported the design using a surrogate material model. Thicker rolled-paper compression members and paper-mache joints formed the final structure. Load testing demonstrated the highest supported load in the class and showed how rope contact and load placement affected local deformation; the available test setup did not establish the bridge’s ultimate capacity.",
-    tags: ["Structural Optimization", "Truss Simulation", "Autodesk Inventor", "Fusion 360", "Statics & Mechanics", "Fabrication"],
+    detail: "Designed and fabricated a modified Howe truss paper bridge to maximize load capacity relative to structural weight. Truss simulations guided a 2:1 span-to-height ratio and more even axial-force distribution. Thicker rolled-paper compression members and paper-mache joints formed the final structure. Load testing demonstrated the highest supported load in the class and showed how rope contact and load placement affected local deformation; the available test setup did not establish the bridge’s ultimate capacity.",
+    tags: ["Structural Optimization", "Truss Simulation", "Autodesk Inventor", "Statics & Mechanics", "Fabrication"],
     image: "images/bridge-gallery/cover.png",
     alt: "Completed modified Howe truss paper bridge",
     gallery: bridgeGallery
@@ -440,7 +434,7 @@ const projects = [
 
 const stackRows = [
   ["SolidWorks", "MATLAB / Simulink", "Abaqus/CAE", "HyperMesh"],
-  ["Inventor", "Fusion 360", "AutoCAD", "Arduino C/C++"],
+  ["Inventor", "AutoCAD", "Arduino C/C++"],
   ["Blender", "Multisim", "GRANTA EduPack", "Excel"]
 ];
 
@@ -915,7 +909,7 @@ function About() {
           <h2 className="about-heading">Engineering at the intersection of <span className="text-accent">simulation, motion, and making.</span></h2>
           <div className="about-body">
             <p>Mechanical engineering student at New York Institute of Technology with research and project experience in mechanical design, simulation, and prototyping. My work combines first-principles analysis and CAD with model development, fabrication, and testing.</p>
-            <p>My projects span implant biomechanics, vehicle dynamics, autonomous robotics, machine-element fatigue, optical sensing, materials selection, structural testing, and turboprop performance. I use SolidWorks, Inventor, Fusion 360, MATLAB, Abaqus/CAE, HyperMesh, and Arduino C++ to investigate mechanical behavior and develop physical prototypes. Machine-shop work includes manual machining, dimensional inspection, and instructor-led exposure to CNC manufacturing.</p>
+            <p>My projects span implant biomechanics, vehicle dynamics, autonomous robotics, machine-element fatigue, optical sensing, materials selection, structural testing, and turboprop performance. I use SolidWorks, Inventor, MATLAB, Abaqus/CAE, HyperMesh, and Arduino C++ to investigate mechanical behavior and develop physical prototypes. Machine-shop work includes manual machining, dimensional inspection, and instructor-led exposure to CNC manufacturing.</p>
           </div>
         </Reveal>
       </div>
@@ -1128,7 +1122,6 @@ const skillGroups = [
     "items": [
       "SolidWorks (Part/Assembly/Drawing)",
       "Autodesk Inventor",
-      "Autodesk Fusion 360",
       "AutoCAD (2D Drafting)",
       "Blender Mesh Processing",
       "Engineering Drawings",
@@ -1202,7 +1195,7 @@ function Stack() {
         {stackRows.map((row, index) => (
           <div className="marquee" key={row.join("-")}>
             <div className={`marquee-track ${index % 2 ? "is-reverse" : ""}`}>
-              {[...row, ...row, ...row].map((item, itemIndex) => <span className="stack-item" aria-hidden={itemIndex >= row.length ? "true" : undefined} key={`${item}-${itemIndex}`}><i aria-hidden="true">{String(index * 4 + (itemIndex % 4) + 1).padStart(2, "0")}</i>{item}<b aria-hidden="true">×</b></span>)}
+              {[...row, ...row, ...row].map((item, itemIndex) => <span className="stack-item" aria-hidden={itemIndex >= row.length ? "true" : undefined} key={`${item}-${itemIndex}`}><i aria-hidden="true">{String(stackRows.slice(0, index).reduce((total, items) => total + items.length, 0) + (itemIndex % row.length) + 1).padStart(2, "0")}</i>{item}<b aria-hidden="true">×</b></span>)}
             </div>
           </div>
         ))}
